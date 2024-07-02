@@ -8,6 +8,7 @@ import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.coroutineexample2.adapter.CompanyAdapter
 import com.example.retrofit2example.R
+import com.example.retrofit2example.adapter.UserAdapter
 import com.example.retrofit2example.api.RetrofitInstance
 import com.example.retrofit2example.databinding.ActivityMainBinding
 import com.example.retrofit2example.viewmodel.MainRepository
@@ -20,6 +21,8 @@ class MainActivity : AppCompatActivity() {
         MainViewModelFactory(MainRepository(RetrofitInstance.getApiService()))
     }
     private lateinit var adapter: CompanyAdapter
+    private lateinit var userAdapter: UserAdapter
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -28,12 +31,16 @@ class MainActivity : AppCompatActivity() {
 
         binding.recyclerView.layoutManager = LinearLayoutManager(this)
 
-        viewModel.getCompanyData().observe(this, Observer {companyList ->
-            Log.e("smkwon","companyList -- > $companyList")
-            binding.recyclerView.adapter = CompanyAdapter(companyList)
+//        viewModel.companyList.observe(this, Observer {companyList ->
+//            Log.e("smkwon","companyList -- > $companyList")
+//            binding.recyclerView.adapter = CompanyAdapter(companyList)
+//
+//        })
+        viewModel.userList.observe(this, Observer {userList ->
+            Log.e("smkwon","companyList -- > $userList")
+            binding.recyclerView.adapter = UserAdapter(userList)
 
         })
-
 
     }
 }

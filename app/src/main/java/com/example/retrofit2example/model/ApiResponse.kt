@@ -12,3 +12,12 @@ data class Company (
     @SerializedName("companyId") val companyId: Int,
     @SerializedName("name") val name: String
 )
+
+data class User (
+    @SerializedName("userId") val userId: Int,
+    @SerializedName("employeeId") val employeeId: String,
+    @SerializedName("department") val department: String,
+    @SerializedName("name") val name: String,
+    @SerializedName("phoneNumber") val phoneNumber: String,
+    @SerializedName("defaultCarId") val defaultCarId: Int,
+)
